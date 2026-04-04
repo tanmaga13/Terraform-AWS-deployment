@@ -1,0 +1,22 @@
+# --- SENSITIVE DATA ---
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+auth.json
+secrets.json
+
+# --- IDE/EDITOR SETTINGS ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- DEPENDENCIES & LOGS ---
+node_modules/
+venv/
+env/
+__pycache__/
+*.log
+npm-debug.log*
