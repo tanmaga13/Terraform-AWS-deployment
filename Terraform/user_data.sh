@@ -11,12 +11,19 @@ apt install -y nodejs
 
 git clone -b master https://github.com/tanmaga13/Terraform-dev.git Ares-app
 
-cd Ares-app
+cd Ares-app/ares-app
 cd backend
 
-pip3 install -r requirements.txt
+apt install -y python3-venv
 
-nohup python3 app.py > backend.log 2>&1 &
+python3 -m venv venv
+
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+# Run Flask
+nohup python app.py > backend.log 2>&1 &
 
 cd ../frontend
 
