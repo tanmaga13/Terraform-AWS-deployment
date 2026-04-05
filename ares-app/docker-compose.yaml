@@ -18,7 +18,7 @@ services:
     volumes:
       - ./frontend:/app
     environment:
-      - BACKEND_URL=http://backend-host:8000/submit
+      - BACKEND_URL=http://backend-host:8000/api
     ports:
       - "3000:3000"
     links:
@@ -30,3 +30,4 @@ services:
 
 networks:
   ares-network: {}
+
