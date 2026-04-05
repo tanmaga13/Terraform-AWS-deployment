@@ -9,7 +9,7 @@ apt install -y python3 python3-pip git
 curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
 apt install -y nodejs
 
-git clone -b devops/docker https://github.com/tanmaga13/assignments.git Ares-app
+git clone -b master https://github.com/tanmaga13/Terraform-dev.git Ares-app
 
 cd Ares-app
 cd backend
