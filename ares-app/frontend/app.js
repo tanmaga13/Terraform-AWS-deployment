@@ -3,7 +3,7 @@ var app = express();
 
 app.set('view engine', 'ejs');
 
-const URL = process.env.BACKEND_URL || 'http://localhost:5000/api';
+const URL = process.env.BACKEND_URL || 'http://<backend-ip>:5000/api';
 
 const fetch = (...args) =>
 	import('node-fetch').then(({default: fetch}) => fetch(...args));
@@ -26,6 +26,6 @@ app.get('/', async function(req, res) {
 	}
 });
 
-app.listen(3000, function() {
+app.listen(3000, '0.0.0.0', function() {
     console.log('Ares listening on port 3000!');
 });

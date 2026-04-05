@@ -1,1 +1,1 @@
-key_name = "Dock-setup"
+key_name = "Dock-Setup"

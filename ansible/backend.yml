@@ -1,0 +1,31 @@
+- hosts: backend
+  become: yes
+
+  tasks:
+    - name: Install dependencies
+      apt:
+        name:
+          - python3
+          - python3-pip
+          - python3-venv
+          - git
+        state: present
+        update_cache: yes
+
+    - name: Clone repo
+      git:
+        repo: https://github.com/tanmaga13/Terraform-dev.git
+        dest: /home/ubuntu/app
+        version: tera-ansible
+
+    - name: Setup virtual environment
+      shell: |
+        cd /home/ubuntu/app/ares-app/backend
+        python3 -m venv venv
+        source venv/bin/activate
+        pip install -r requirements.txt
+
+    - name: Run Flask
+      shell: |
+        cd /home/ubuntu/app/ares-app/backend
+        nohup venv/bin/python app.py > backend.log 2>&1 &
