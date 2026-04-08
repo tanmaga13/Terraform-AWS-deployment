@@ -1,0 +1,43 @@
+- hosts: frontend
+  become: yes
+
+  vars:
+    backend_url: "http://{{ backend_ip }}:5000/api"
+
+  tasks:
+    - name: Install Node
+      apt:
+        name:
+          - nodejs
+          - npm
+          - git
+        state: present
+        update_cache: yes
+
+    - name: Remove existing app directory
+      file:
+        path: /home/ubuntu/app
+        state: absent
+
+    - name: Clone repo
+      git:
+        repo: https://github.com/tanmaga13/Terraform-dev.git
+        dest: /home/ubuntu/app
+        version: tera-ansible
+
+    - name: Install dependencies
+      shell: |
+        cd /home/ubuntu/app/ares-app/frontend
+        npm install
+
+    - name: Set backend URL
+      lineinfile:
+        path: /home/ubuntu/app/ares-app/frontend/app.js
+        regexp: "^const URL"
+        line: "const URL = '{{ backend_url }}';"
+
+    - name: Run Express
+      shell: |
+        pkill node || true
+        cd /home/ubuntu/app/ares-app/frontend
+        nohup node app.js > frontend.log 2>&1 &

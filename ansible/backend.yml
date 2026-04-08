@@ -5,9 +5,8 @@
     - name: Install dependencies
       apt:
         name:
-          - python3
-          - python3-pip
           - python3-venv
+          - python3-pip
           - git
         state: present
         update_cache: yes
@@ -22,10 +21,9 @@
       shell: |
         cd /home/ubuntu/app/ares-app/backend
         python3 -m venv venv
-        source venv/bin/activate
-        pip install -r requirements.txt
+        ./venv/bin/pip install -r requirements.txt
 
     - name: Run Flask
       shell: |
         cd /home/ubuntu/app/ares-app/backend
-        nohup venv/bin/python app.py > backend.log 2>&1 &
+        nohup ./venv/bin/python app.py > backend.log 2>&1 &
