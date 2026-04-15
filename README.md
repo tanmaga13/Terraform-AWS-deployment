@@ -1,3 +1,4 @@
+Terraform-based AWS ECS Fargate deployment with Flask backend and Express frontend using Docker, ALB, and CI/CD
 # 🚀 Terraform + AWS ECS Fargate Deployment (Flask + Express)
 
 ## 📌 Overview
